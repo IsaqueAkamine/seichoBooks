@@ -1,0 +1,24 @@
+<h1>Cadastro de Produtos Categoria</h1>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @product_categories.each do |product_category| %>
+      <tr>
+        <td><%= product_category.name %></td>
+        <td><%= link_to 'Editar', edit_product_category_path(product_category) %></td>
+        <td><%= link_to 'Excluir', product_category, method: :delete, data: { confirm: 'Excluir categoria: ' + product_category.name + '?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Produto Categoria', new_product_category_path %>

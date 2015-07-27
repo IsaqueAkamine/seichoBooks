@@ -1,0 +1,24 @@
+<h1>Cadastro de Empresas</h1>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th width=100%>Nome</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.name %></td>
+        <td><%= link_to 'Editar', edit_company_path(company) %></td>
+        <td><%= link_to 'Excluir', company, method: :delete, data: { confirm: 'Excluir empresa: ' + company.name + '?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova Empresa', new_company_path %>

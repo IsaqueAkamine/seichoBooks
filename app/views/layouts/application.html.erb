@@ -1,17 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SeichoBooks</title>
-  <link rel="stylesheet" href="http://railsgirls.com/assets/bootstrap.css">
+  <title>Seichobooks</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js' %>
+  <%= stylesheet_link_tag '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-  <div class="container">
-    <%= yield %>
-  </div>
+  <header class="navbar navbar-fixed-top navbar-default" role="navigation">
+    <nav class="navbar-inner">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsable">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/welcomes/index" class="navbar-brand">Seicho Books</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapsable">
+          <% if user_signed_in? %>
+          <ul class="nav navbar-nav foo" id="menu">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastros <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">Great stuff!</li>
+                <li><a href="/companies">Empresas</a></li>
+                <li><%= link_to 'Produtos', products_path %></li>
+                <li><%= link_to 'Categorias', product_categories_path %></li>
+                <li><%= link_to 'Preços', prices_path %></li>
+                <li><%= link_to 'Estoque', stocks_path %></li>
 
+                <li class="divider"></li>
+                <li><a href="/admin">Admin Dashboard</a></li>
+                <li><%= link_to 'Usuários', users_path %></li>
+              </ul>
+            </li>
+            <li class="active"><%= link_to 'Vendas', sells_path %></li>
+            <li><%= link_to 'Nova Ideia', '#' %></li>
+            <!--<li><%= link_to 'Contato', contacts_path %></li>-->
+            <li>
+              <a href="/contacts/index">
+                <span class='glyphicon glyphicon-hand-right'></span>
+                Contato!
+              </a>
+            </li>
+          </ul>
+          <% end %>
+          <ul class="nav navbar-nav navbar-right" align="right">
+            <li>
+              <% if user_signed_in? %>
+              <li>
+                <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>
+              </li>
+              <% else %>
+              <li>
+                <%= link_to('Login', new_user_session_path)  %>
+              </li>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div id="main" role="main">
+    <div class="container">
+      <div class="content">
+       <div class="row">
+        <div class="span12">
+          <%= yield %>
+        </div>
+      </div>
+      <footer>
+      </footer>
+    </div>
+  </div> <!--! end of .container -->
+</div> <!--! end of #main -->
 </body>
 </html>

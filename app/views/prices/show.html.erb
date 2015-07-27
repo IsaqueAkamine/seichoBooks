@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Produto:</strong>
+  <%= @price.product %>
+</p>
+
+<p>
+  <strong>Empresa:</strong>
+  <%= @price.company %>
+</p>
+
+<p>
+  <strong>Preço:</strong>
+  <%= @price.price %>
+</p>
+
+<p>
+  <strong>Data Inicial:</strong>
+  <%= @price.starts_at %>
+</p>
+
+<p>
+  <strong>Data Final:</strong>
+  <%= @price.end_at %>
+</p>
+
+<%= link_to 'Editar', edit_price_path(@price) %> |
+<%= link_to 'Voltar', prices_path %>

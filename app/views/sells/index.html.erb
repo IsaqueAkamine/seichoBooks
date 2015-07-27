@@ -1,0 +1,31 @@
+<h1>Lista de Vendas</h1>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Empresa</th>
+      <th>Usuario</th>
+      <th>Produto</th>
+      <th>Preço Total</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sells.each do |sell| %>
+      <tr>
+        <td><%= sell.company %></td>
+        <td><%= sell.user %></td>
+        <td><%= sell.product.name %></td>
+        <td><%= sell.price_total %></td>
+        <td><%= link_to 'Show', sell %></td>
+        <td><%= link_to 'Edit', edit_sell_path(sell) %></td>
+        <td><%= link_to 'Destroy', sell, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova Venda', new_sell_path %>
