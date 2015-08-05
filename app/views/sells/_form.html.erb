@@ -3,7 +3,7 @@
 
 <div class="form-inputs">
   <%= f.association :company %>
-  <%= f.association :user %>
+  <%= f.association :user, label_method: :email %>
   <%= f.association :product %>
   <%= f.input :price_total %>
 </div>

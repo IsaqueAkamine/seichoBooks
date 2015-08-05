@@ -14,8 +14,8 @@
   <tbody>
     <% @sells.each do |sell| %>
       <tr>
-        <td><%= sell.company %></td>
-        <td><%= sell.user %></td>
+        <td><%= sell.company.name %></td>
+        <td><%= sell.user.email %></td>
         <td><%= sell.product.name %></td>
         <td><%= sell.price_total %></td>
         <td><%= link_to 'Show', sell %></td>
