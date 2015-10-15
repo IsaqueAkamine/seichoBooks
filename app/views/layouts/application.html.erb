@@ -39,7 +39,7 @@
                 <li><%= link_to 'Usuários', users_path %></li>
               </ul>
             </li>
-            <li class="active"><%= link_to 'Vendas', sells_path %></li>
+            <li class="<%= 'active' if params[:controller] == 'sells' %>"><%= link_to 'Vendas', sells_path %></li>
             <li><%= link_to 'Nova Ideia', '#' %></li>
             <!--<li><%= link_to 'Contato', contacts_path %></li>-->
             <li>

@@ -16,8 +16,8 @@
       <tr>
         <td><%= sell.company.name %></td>
         <td><%= sell.user.email %></td>
-        <td><%= sell.product.name %></td>
-        <td><%= sell.price_total %></td>
+        <td><%= sell.product.try(:name) %></td>
+        <td><%= number_to_currency(sell.price_total) %></td>
         <td><%= link_to 'Show', sell %></td>
         <td><%= link_to 'Edit', edit_sell_path(sell) %></td>
         <td><%= link_to 'Destroy', sell, method: :delete, data: { confirm: 'Are you sure?' } %></td>
